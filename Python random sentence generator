@@ -1,0 +1,7 @@
+from random import randint
+names=["I","We","He","She","They","Mary","William"]
+verbs=["is", "are", "was", "were"]
+nouns=["walking", "reading", "talking", "working", "speaking", "watching TV"]
+while True:
+    print(names[randint(0,len(names)-1)]+" "+verbs[randint(0,len(verbs)-1)]+" "+nouns[randint(0,len(nouns)-1)])
+    break
