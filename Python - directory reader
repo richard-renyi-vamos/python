@@ -1,0 +1,12 @@
+# Import OS module - we need this to read a directory
+import os
+
+# Directory path settings
+path = 'C:\Windows'
+
+# Read the directory contents
+files = os.listdir(path)
+
+# Read the directory contents
+for file in files:
+    print(file)
