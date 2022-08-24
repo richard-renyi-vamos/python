@@ -1,0 +1,8 @@
+# String to search
+string = 'Python C++ Java Python Javascript Python Test Python Squirrel Python'
+# Search string function
+search = 'Python'
+# Count value storage
+count = string.count(search)
+# Output
+print("%s appears %d times" % (search, count))
