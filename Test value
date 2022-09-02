@@ -1,0 +1,8 @@
+# Set a numeric value
+number = 70
+
+# Test value
+if (number >= 70):
+    print("You have passed!")
+else:
+    print("You have not passed!")
