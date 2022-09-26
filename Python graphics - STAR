@@ -1,0 +1,7 @@
+from turtle import *
+begin_fill()
+while True:
+    forward(150)
+    left(150)
+    end_fill()
+done()
