@@ -1,0 +1,44 @@
+import turtle
+
+# Set the screen size and background color
+turtle.setup(1000, 1000)
+turtle.bgcolor("black")
+
+# Set the turtle's color and shape
+turtle.color("white")
+turtle.shape("turtle")
+
+# Set the turtle's speed
+turtle.speed(0)
+
+# Set the turtle's pen size
+turtle.pensize(2)
+
+# Create a function to draw a fractal
+def draw_fractal(length, depth):
+  if depth == 0:
+    turtle.forward(length)
+    return
+  for angle in [60, -120, 60, 0]:
+    turtle.left(angle)
+    draw_fractal(length/3, depth-1)
+
+# Create a function to animate the fractal
+def animate_fractal():
+  turtle.clear()
+  turtle.home()
+  turtle.setheading(90)
+  turtle.tracer(False)
+  turtle.pendown()
+  draw_fractal(200, 4)
+  turtle.update()
+
+# Set the turtle's position
+turtle.penup()
+turtle.goto(-200, -200)
+
+# Animate the fractal
+while True:
+  animate_fractal()
+
+turtle.done()
