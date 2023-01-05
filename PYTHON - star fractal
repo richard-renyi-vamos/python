@@ -1,0 +1,40 @@
+# importing the turtle module
+import turtle
+
+# turtle instance
+stars = turtle.Turtle()
+
+# turtle speed up! ☺
+stars.speed(200)
+
+# to change the background color
+stars.getscreen().bgcolor("lightblue")
+stars.color("black")
+
+# drawing stop
+stars.penup()
+
+# move the turtle
+stars.goto((-100, 100))
+
+# drawing start
+stars.pendown()
+
+# function to draw stars
+def star(turtle, size):
+	if size <= 5:
+		return
+	else:
+		for i in range(5):
+			
+			# moving turtle forward
+			turtle.forward(size)
+			star(turtle, size/3)
+
+			# moving turtle left
+			turtle.left(216)
+
+
+# star function
+star(stars, 180)
+turtle.done()
