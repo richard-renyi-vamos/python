@@ -11,7 +11,7 @@ def julia_set(c=-0.4 + 0.6j, height=800, width=1000, x=0, y=0, zoom=1, max_itera
     y_from = y - y_height/zoom
     y_to = y + y_height/zoom
     
-    # Here the actual algorithm starts
+    # FRACTAL ALGORITHM START
     x = np.linspace(x_from, x_to, width).reshape((1, width))
     y = np.linspace(y_from, y_to, height).reshape((height, 1))
     z = x + 1j * y
