@@ -1,0 +1,38 @@
+import random
+import math
+# INPUTS
+lower = int(input("Enter the BOTTOM LIMIT:- "))
+
+# Taking Inputs
+upper = int(input("Enter TOP LIMIT:- "))
+
+# RANDOM GENERATION (between bottom & top limit)
+x = random.randint(lower, upper)
+print("\n\tYou've got ",
+	round(math.log(upper - lower + 1, 2)),
+	" tries to guess the number!\n")
+
+# INITIATING THE GUESSES
+count = 0
+
+while count < math.log(upper - lower + 1, 2):
+	count += 1
+
+	# GUESSES AS INPUT
+	guess = int(input("Guess a number:- "))
+
+	# TESTING OF CONDITIONS
+	if x == guess:
+		print("Congratulations you did it in ",
+			count, " try")
+		# Once guessed, loop will break
+		break
+	elif x > guess:
+		print("Your guess is too small.")
+	elif x < guess:
+		print("Your guess is too high.")
+
+# TOO MANY GUESSES -->
+if count >= math.log(upper - lower + 1, 2):
+	print("\nThe number is %d" % x)
+	print("\tThanks for playing!")
