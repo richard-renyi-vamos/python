@@ -1,0 +1,7 @@
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
+
+print(Fore.YELLOW+Back.BLUE+"Hello")
+print(Fore.WHITE+Back.RED+"This is a colored text")
+print(Fore.WHITE+Back.GREEN+ "Python app")
