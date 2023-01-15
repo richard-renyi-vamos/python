@@ -1,0 +1,11 @@
+import pyqrcode 
+from pyqrcode import QRCode 
+  
+# Link to QR code (the app will transform this)
+s = "https://www.youtube.com/"
+  
+# QR code generation
+url = pyqrcode.create(s) 
+  
+# QR code image output
+url.svg("myyoutube.svg", scale = 8) 
