@@ -1,0 +1,21 @@
+# MODULE IMPORT
+import matplotlib.pyplot as plt
+
+# X AXIS VALUES
+x = [10,30,20]
+# corresponding y axis values
+y = [10,20,40]
+
+# POINT PLOTTING
+plt.plot(x, y)
+
+# X AXIS NAMING
+plt.xlabel('x - axis')
+# naming the y axis
+plt.ylabel('y - axis')
+
+# GRAPH TITLE
+plt.title('This is an awesome graph! ☺')
+
+# SHOW THE PLOT!
+plt.show()
