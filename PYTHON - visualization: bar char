@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# DATASET
+data = {'Trees':5, 'Animals':10, 'Mushrooms':3, 'Cities':15}
+courses = list(data.keys())
+values = list(data.values())
+
+fig = plt.figure(figsize = (10, 5))
+
+# creating the bar plot
+plt.bar(courses, values, color ='blue',
+		width = 0.5)
+
+plt.xlabel("Photo type")
+plt.ylabel("Amount of photos")
+plt.title("Photos by type and amount")
+plt.show()
