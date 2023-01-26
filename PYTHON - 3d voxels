@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+# COORDINATES
+x, y, z = np.indices((10, 10, 10))
+
+# CUBE DRAWING 
+cube1 = (x < 7) & (y < 7) & (z < 7)
+cube2 = (x >= 7) & (y >= 7) & (z >= 7)
+link = abs(x - y) + abs(y - z) + abs(z - x) <= 5
+
+# SINGLE ARRAY COMBINATION
+voxelarray = cube1 | cube2 | link
+
+# OBJECT COLORS
+colors = np.empty(voxelarray.shape, dtype=object)
+colors[link] = 'red'
+colors[cube1] = 'green'
+colors[cube2] = 'blue'
+
+# FINAL PLOT
+ax = plt.figure().add_subplot(projection='3d')
+ax.voxels(voxelarray, facecolors=colors, edgecolor='k')
+
+plt.show()
