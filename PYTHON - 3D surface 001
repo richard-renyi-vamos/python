@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+# MESH CREATION
+r = np.linspace(0.2, 1.4, 70)
+p = np.linspace(0.3, 1*np.pi, 70)
+R, P = np.meshgrid(r, p)
+Z = ((R**2 - 1)**2)
+
+# MESH EXPRESSION
+X, Y = R*np.cos(P), R*np.sin(P)
+
+# SURFACE PLOTTING
+ax.plot_surface(X, Y, Z, cmap=plt.cm.YlGnBu_r)
+
+# LIMITS & LABELS
+ax.set_zlim(0, 1)
+ax.set_xlabel(r'$\phi_\mathrm{real}$')
+ax.set_ylabel(r'$\phi_\mathrm{im}$')
+ax.set_zlabel(r'$V(\phi)$')
+
+plt.show()
