@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+n_radii = 5
+n_angles = 100
+
+# RADII & ANGLE SPACE CALCULATION
+radii = np.linspace(0.1, 2.0, n_radii)
+angles = np.linspace(0, 3*np.pi, n_angles, endpoint=False)[..., np.newaxis]
+
+# COMPUTING X & Y
+x = np.append(1, (radii*np.cos(angles)).flatten())
+y = np.append(5, (radii*np.sin(angles)).flatten())
+
+# COMPUTING Z
+z = np.sin(-x*y)
+
+ax = plt.figure().add_subplot(projection='3d')
+
+ax.plot_trisurf(x, y, z, linewidth=0.3, antialiased=True)
+
+plt.show()
