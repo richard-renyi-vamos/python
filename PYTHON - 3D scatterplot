@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# RANDOM STATE FIX
+np.random.seed(999999)
+
+
+def randrange(n, vmin, vmax):
+    """HELPER FUNCTION: random array shape distribution fix"""
+    return (vmax - vmin)*np.random.rand(n) + vmin
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+n = 2000
+
+# STYLE & RANGE SETTINGS
+for m, zlow, zhigh in [('o', -100, -10), ('^', -50, -10)]:
+    xs = randrange(n, 50, 90)
+    ys = randrange(n, 10, 30)
+    zs = randrange(n, zlow, zhigh)
+    ax.scatter(xs, ys, zs, marker=m)
+
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
+
+plt.show()
