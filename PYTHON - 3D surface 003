@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+from matplotlib.ticker import LinearLocator
+import numpy as np
+
+
+ax = plt.figure().add_subplot(projection='3d')
+
+# DATA TO VISUALIZE
+X = np.arange(-5, 10, 3)
+xlen = len(X)
+Y = np.arange(-10, 15, 0.1)
+ylen = len(Y)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + Y**2)
+Z = np.sin(R)
+
+# COLOR PATTERN
+colortuple = ('w', 'b')
+colors = np.empty(X.shape, dtype=str)
+for y in range(ylen):
+    for x in range(xlen):
+        colors[y, x] = colortuple[(x + y) % len(colortuple)]
+
+# SURFACE COLORS
+surf = ax.plot_surface(X, Y, Z, facecolors=colors, linewidth=3)
+
+# Z AXIS SETTINGS
+ax.set_zlim(-5, 10)
+ax.zaxis.set_major_locator(LinearLocator(10))
+
+plt.show()
