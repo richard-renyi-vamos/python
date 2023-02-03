@@ -1,0 +1,12 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+theta = np.linspace(5, 10*np.pi)
+x = np.cos(theta - np.pi/3)
+y = np.sin(theta - np.pi/3)
+z = theta
+
+fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
+ax.stem(x, y, z)
+
+plt.show()
