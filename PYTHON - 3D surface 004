@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator
+import numpy as np
+
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+
+# MDATA SET
+X = np.arange(-10, 20, 0.5)
+Y = np.arange(-10, 20, 0.5)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + Y**2)
+Z = np.sin(R)
+
+# SURFACE PLOTTING
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                       linewidth=5000, antialiased=True)
+
+# Z AXIS CUSTOMIZATION
+ax.set_zlim(-2, 2)
+ax.zaxis.set_major_locator(LinearLocator(20))
+
+# StrMethodFormatter - AUTOMATIC
+ax.zaxis.set_major_formatter('{x:.02f}')
+
+# COLOR BAR - VALUES FOR THE COLORS
+fig.colorbar(surf, shrink=2, aspect=10)
+
+plt.show()
