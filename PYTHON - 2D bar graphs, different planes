@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# RANDOM STATE FIX
+np.random.seed(99999)
+
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+colors = ['y', 'b', 'g', 'r', 'w', 'black']
+yticks = [1, 5, 3, 2, 5, 7]
+for c, k in zip(colors, yticks):
+  
+    # RANDOM DATA GENERATION
+    xs = np.arange(15)
+    ys = np.random.rand(15)
+
+    # ARRAY SETTINGS
+    cs = [c] * len(xs)
+    cs[5] = 'c'
+
+    # BAR PLOTTING, OPACITY
+    ax.bar(xs, ys, zs=k, zdir='y', color=cs, alpha=0.9)
+
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+
+# DATA LABELING
+ax.set_yticks(yticks)
+
+plt.show()
