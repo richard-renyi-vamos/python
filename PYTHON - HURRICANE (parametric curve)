@@ -1,0 +1,17 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+ax = plt.figure().add_subplot(projection='3d')
+
+# ARRAYS: X, Y, Z
+theta = np.linspace(-2 * np.pi, 30 * np.pi, 100)
+z = np.linspace(-2, 2, 100)
+r = z**2 + 1
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+
+ax.plot(x, y, z, label='HURRICANE (parametric curve)')
+ax.legend()
+
+plt.show()
