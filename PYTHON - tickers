@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt
+
+
+def companies(x, pos):
+    """TWO ARGUMENTS: VALUE + TICK POSITION"""
+    return '${:1.5f}M'.format(x*1e-7)
+
+
+fig, ax = plt.subplots()
+# set_major_formatter internally creates a FuncFormatter from the callable.
+ax.yaxis.set_major_formatter(companies)
+income = [2e7, 5e7, 4e7, 3e7]
+ax.bar(['Cloud IT Corp', 'Real Estate Inc', 'Heavenly Leasure Den', 'Star Sport Club'], income)
+plt.show()
