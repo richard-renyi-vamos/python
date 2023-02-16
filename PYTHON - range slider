@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.widgets import RangeSlider
+
+# IMAGE GENERATION
+np.random.seed(9000)
+N = 300
+img = np.random.randn(N, N)
+
+fig, axs = plt.subplots(1, 2, figsize=(10, 5))
+fig.subplots_adjust(bottom=0.1)
+
+im = axs[0].imshow(img)
+axs[1].hist(img.flatten(), bins='auto')
+axs[1].set_title('Histogram of pixel intensities')
+
+# RANGE SLIDER
+slider_ax = fig.add_axes([0.10, 0.01, 0.80, 0.02])
+slider = RangeSlider(slider_ax, "Threshold", img.min(), img.max())
+
+# Create the Vertical lines on the histogram
+lower_limit_line = axs[1].axvline(slider.val[0], color='r')
+upper_limit_line = axs[1].axvline(slider.val[1], color='r')
+
+
+def update(val):
+    # RANGE SLIDER VALUES
+
+    # Update the image's colormap
+    im.norm.vmin = val[0]
+    im.norm.vmax = val[2]
+
+    # Update the position of the vertical lines
+    lower_limit_line.set_xdata([val[0], val[0]])
+    upper_limit_line.set_xdata([val[1], val[1]])
+
+    # REDRAWING
+    fig.canvas.draw_idle()
+
+
+slider.on_changed(update)
+plt.show()
