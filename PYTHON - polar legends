@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig = plt.figure()
+ax = fig.add_subplot(projection="polar", facecolor="cyan")
+
+r = np.linspace(0, 5, 300)
+theta = 2 * np.pi * r
+ax.plot(theta, r, color="tab:green", lw=7, label="X")
+ax.plot(0.9 * theta, r, color="tab:blue", ls="--", lw=9, label="Y")
+ax.tick_params(grid_color="palegoldenrod")
+# POLAR AXES SETTINGS
+angle = np.deg2rad(65)
+ax.legend(loc="lower left",
+          bbox_to_anchor=(.8 + np.cos(angle)/6, .6 + np.sin(angle)/9))
+
+plt.show()
