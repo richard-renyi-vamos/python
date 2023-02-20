@@ -1,0 +1,6 @@
+import matplotlib.pyplot as plt
+
+plt.plot([5, 3, 7, 2], 'o-b')
+plt.ylabel('Money')
+plt.xlabel('Time')
+plt.show()
