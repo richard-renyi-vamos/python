@@ -1,0 +1,9 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 150ms INTERVALS SAMPLING
+t = np.arange(0., 3., 0.15)
+
+# GREEN DASHES, RED SQUARES, BLUE TRIANGLES
+plt.plot(t, t, 'g--', t, t**2, 'rs', t, t**3, 'b^')
+plt.show()
