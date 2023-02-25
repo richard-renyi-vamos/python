@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+ax = plt.figure().add_subplot(projection='3d')
+
+X, Y = np.mgrid[0:9*np.pi:0.7, 0:3*np.pi:0.2]
+Z = np.sqrt(np.abs(np.cos(X) + np.cos(Y)))
+
+ax.plot_surface(X + 1e5, Y + 1e5, Z, cmap='plasma', cstride=5, rstride=3)
+
+ax.set_xlabel("dimension A")
+ax.set_ylabel("dimension B")
+ax.set_zlabel("dimension C")
+ax.set_zlim(0, 2)
+
+plt.show()
