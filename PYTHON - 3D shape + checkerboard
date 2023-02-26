@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+from matplotlib.ticker import LinearLocator
+import numpy as np
+
+
+ax = plt.figure().add_subplot(projection='3d')
+
+# DATA
+X = np.arange(-3, 3, 0.25)
+xlen = len(X)
+Y = np.arange(-3, 3, 0.25)
+ylen = len(Y)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + Y**2)
+Z = np.sin(R)
+
+# CHECKERBOARD PATTERN
+colortuple = ('b', 'w')
+colors = np.empty(X.shape, dtype=str)
+for y in range(ylen):
+    for x in range(xlen):
+        colors[y, x] = colortuple[(x + y) % len(colortuple)]
+
+# SURFACE PLOTTING
+surf = ax.plot_surface(X, Y, Z, facecolors=colors, linewidth=0)
+
+# Z AXIS
+ax.set_zlim(-1, 1)
+ax.zaxis.set_major_locator(LinearLocator(6))
+
+plt.show()
