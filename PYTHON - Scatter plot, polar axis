@@ -1,0 +1,17 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# RANDOM STATE FIX
+np.random.seed(42)
+
+# AREAS & COLORS
+N = 33
+r = 70 * np.random.rand(N)
+theta = 3 * np.pi * np.random.rand(N)
+area = 20 * r**1
+colors = theta
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='polar')
+c = ax.scatter(theta, r, c=colors, s=area, cmap='hsv', alpha=1)
