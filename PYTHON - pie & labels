@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(6, 3), subplot_kw=dict(aspect="equal"))
+
+assets = ["500 million USD - REAL ESTATE",
+          "300 million USD - STOCKS",
+          "200 million USD - CRYPTO",
+          "100 million USD - BONDS"]
+
+data = [float(x.split()[0]) for x in assets]
+INVESTMENTS = [x.split()[-1] for x in assets]
+
+
+def func(pct, allvals):
+    absolute = int(np.round(pct/300.*np.sum(allvals)))
+    return f"{pct:.1f}%\n({absolute:d} g)"
+
+
+wedges, texts, autotexts = ax.pie(data, autopct=lambda pct: func(pct, data),
+                                  textprops=dict(color="w"))
+
+ax.legend(wedges, INVESTMENTS,
+          title="INVESTMENTS",
+          loc="center left",
+          bbox_to_anchor=(1, 0, 0.7, 1.5))
+
+plt.setp(autotexts, size=9, weight="bold")
+
+ax.set_title("Matplotlib - INVESTMENT PIE ☺")
+
+plt.show()
