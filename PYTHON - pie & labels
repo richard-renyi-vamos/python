@@ -30,3 +30,5 @@ plt.setp(autotexts, size=9, weight="bold")
 ax.set_title("Matplotlib - INVESTMENT PIE ☺")
 
 plt.show()
+
+# SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_and_donut_labels.html
