@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# RANDOM STATE FIX
+np.random.seed(42)
+
+plt.style.use('bmh')
+
+
+def plot_beta_hist(ax, a, b):
+    ax.hist(np.random.beta(a, b, size=50000),
+            histtype="stepfilled", bins=30, alpha=0.8, density=True)
+
+
+fig, ax = plt.subplots()
+plot_beta_hist(ax, 5, 15)
+plot_beta_hist(ax, 2, 20)
+plot_beta_hist(ax, 3, 15)
+plot_beta_hist(ax, 20, 40)
+ax.set_title("'bmh' data visualisation")
+
+plt.show()
+
+# SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/style_sheets/bmh.html#sphx-glr-gallery-style-sheets-bmh-py
