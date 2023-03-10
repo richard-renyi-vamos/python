@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# DATA
+x = np.linspace(-5, 10, 100).reshape(1, -1)
+y = np.linspace(-10, 20, 80).reshape(-1, 1)
+z = np.cos(x) + np.sin(y)
+
+# X & Y FLATTENING
+x, y = x.flatten(), y.flatten()
+
+fig2, ax2 = plt.subplots()
+n_levels = 10
+ax2.contour(x, y, z, n_levels, colors='black', linestyles='-')
+cs = ax2.contourf(x, y, z, n_levels, colors='none',
+                  hatches=['X', '/', '\\', None, '\\\\', '+'],
+                  extend='higher')
+
+# LEGEND
+test_1, test_2 = cs.legend_elements(str_format='{:3.1f}'.format)
+ax2.legend(test_1, test_2, handleheight=2, framealpha=1)
+plt.show()
+
+#SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/images_contours_and_fields/contourf_hatching.html
