@@ -1,0 +1,43 @@
+import numpy as np
+
+import matplotlib.pyplot as plt
+from matplotlib.image import BboxImage
+from matplotlib.transforms import Bbox, TransformedBbox
+
+
+fig, (ax1, ax2) = plt.subplots(ncols=2)
+
+# ----------------------------
+# BboxImage & TEXT
+# ----------------------------
+txt = ax1.text(0.5, 0.5, "TOAST", size=45, ha="center", color="blue")
+ax1.add_artist(
+    BboxImage(txt.get_window_extent, data=np.arange(256).reshape((2, -2))))
+
+# ------------------------------------
+# BboxImage FOR THE COLORMAPS
+# ------------------------------------
+# List of all colormaps; skip reversed colormaps.
+cmap_names = sorted(m for m in plt.colormaps if not m.endswith("_r"))
+
+ncol = 15
+nrow = len(cmap_names) // ncol + 2
+
+xpad_fraction = 0.5
+dx = 2 / (ncol + xpad_fraction * (ncol - 1))
+
+ypad_fraction = 0.5
+dy = 2 / (nrow + ypad_fraction * (nrow - 1))
+
+for i, cmap_name in enumerate(cmap_names):
+    ix, iy = divmod(i, nrow)
+    bbox0 = Bbox.from_bounds(ix*dx*(1+xpad_fraction),
+                             2 - iy*dy*(1+ypad_fraction) - dy,
+                             dx, dy)
+    bbox = TransformedBbox(bbox0, ax2.transAxes)
+    ax2.add_artist(
+        BboxImage(bbox, cmap=cmap_name, data=np.arange(300).reshape((2, -2))))
+
+plt.show()
+
+# SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/images_contours_and_fields/demo_bboximage.html
