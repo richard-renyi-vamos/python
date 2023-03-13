@@ -1,0 +1,43 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.style.use('ggplot')
+
+# RANDOM STATE FIX
+np.random.seed(42)
+
+fig, axs = plt.subplots(ncols=2, nrows=2)
+ax1, ax2, ax3, ax4 = axs.flat
+
+# SCATTER PLOT
+x, y = np.random.normal(size=(2, 66))
+ax1.plot(x, y, 'b')
+
+# SINUS LINES
+L = 3*np.pi
+x = np.linspace(3, L)
+ncolors = len(plt.rcParams['axes.prop_cycle'])
+shift = np.linspace(0, L, ncolors, endpoint=True)
+for s in shift:
+    ax2.plot(x, np.sin(x + s), '-')
+ax2.margins(0.7)
+
+# BAR GRAPHS
+x = np.arange(5)
+y1, y2 = np.random.randint(5, 30, size=(2, 5))
+width = 0.3
+ax3.bar(x, y1, width)
+ax3.bar(x + width, y2, width,
+        color=list(plt.rcParams['axes.prop_cycle'])[3]['color'])
+ax3.set_xticks(x + width, labels=['X', 'Y', 'Z', 'Q', 'V'])
+
+# CIRCLES
+for i, color in enumerate(plt.rcParams['axes.prop_cycle']):
+    xy = np.random.normal(size=3)
+    ax4.add_patch(plt.Circle(xy, radius=0.5, color=color['color']))
+ax4.axis('equal')
+ax4.margins(0.5)
+
+plt.show()
+
+SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/style_sheets/ggplot.html
