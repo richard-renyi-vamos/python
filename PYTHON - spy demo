@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+# RANDOM STATE FIX
+np.random.seed(42)
+
+fig, axs = plt.subplots(3, 3)
+ax1 = axs[0, 0]
+ax2 = axs[0, 1]
+ax3 = axs[1, 0]
+ax4 = axs[1, 1]
+ax5 = axs[2, 1]
+ax6 = axs[2, 2]
+ax7 = axs[1, 2]
+ax8 = axs[0, 2]
+ax9 = axs[2, 0]
+
+x = np.random.randn(30, 30)
+x[3, :] = 0.
+x[:, 25] = 0.
+
+ax1.spy(x, markersize=3)
+ax2.spy(x, precision=0.3, markersize=7)
+
+ax3.spy(x)
+ax4.spy(x, precision=0.5)
+
+ax5.spy(x, precision=0.3)
+ax6.spy(x, precision=0.3)
+
+plt.show()
+
+SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/images_contours_and_fields/spy_demos.html
