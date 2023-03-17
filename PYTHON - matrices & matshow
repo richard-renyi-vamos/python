@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 2D ARRAY, LINEAR INCREASING VALUES
+a = np.diag(range(50))
+
+plt.matshow(a)
+
+plt.show()
+
+# SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/images_contours_and_fields/matshow.html
