@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# RANDOM STATE FIX
+np.random.seed(42)
+
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+x, y = np.random.rand(2, 200) * 10
+hist, xedges, yedges = np.histogram2d(x, y, bins=6, range=[[0, 6], [0, 6]])
+
+# ARRAY ANCHORING
+xpos, ypos = np.meshgrid(xedges[:-1] + 0.5, yedges[:-1] + 0.5, indexing="ij")
+xpos = xpos.ravel()
+ypos = ypos.ravel()
+zpos = 0
+
+# ARRAY DIMENSIONS
+dx = dy = 0.7 * np.ones_like(zpos)
+dz = hist.ravel()
+
+ax.bar3d(xpos, ypos, zpos, dx, dy, dz, zsort='average')
+
+plt.show()
+
+# 3D histogram of 2D data
+# SOURCE TUTORIAL: https://matplotlib.org/stable/gallery/mplot3d/hist3d.html#sphx-glr-gallery-mplot3d-hist3d-py
