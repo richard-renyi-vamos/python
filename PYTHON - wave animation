@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Set up the figure and axes
+fig, ax = plt.subplots()
+ax.set_xlim(0, 2*np.pi)
+ax.set_ylim(-1, 1)
+
+# Initialize the line
+line, = ax.plot([], [])
+
+# Define the wave function
+def wave(x, t):
+    return np.sin(x - t)
+
+# Define the animation function
+def animate(frame):
+    x = np.linspace(0, 2*np.pi, 100)
+    y = wave(x, frame/10)
+    line.set_data(x, y)
+    return line,
+
+# Create the animation
+ani = animation.FuncAnimation(fig, animate, frames=100, interval=50, blit=True)
+
+# Show the animation
+plt.show()
+
+# CREATED WITH THE HELP OF CHAT-GPT-4: https://chat.openai.com/chat
