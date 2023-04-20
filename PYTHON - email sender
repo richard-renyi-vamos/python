@@ -1,0 +1,26 @@
+import smtplib
+
+# Set up the SMTP server and login credentials
+smtp_server = 'smtp.gmail.com'  # Change to your email provider's SMTP server
+smtp_port = 587  # Change to your email provider's SMTP port
+smtp_username = 'your_email_address@gmail.com'  # Change to your email address
+smtp_password = 'your_email_password'  # Change to your email password
+
+# Set up the email message
+from_email = smtp_username
+to_email = 'recipient_email_address@example.com'  # Change to the recipient's email address
+subject = 'Hello from Python!'
+body = 'Hi there, this is an automated email sent from Python. Just wanted to say hello!'
+
+# Create the email message
+message = f'Subject: {subject}\n\n{body}'
+
+# Connect to the SMTP server and send the email
+with smtplib.SMTP(smtp_server, smtp_port) as server:
+    server.starttls()
+    server.login(smtp_username, smtp_password)
+    server.sendmail(from_email, to_email, message)
+
+print('Email sent!')
+
+# CREATED WITH THE HELP OF OPEN-AI CHAT GPT: https://chat.openai.com/chat
